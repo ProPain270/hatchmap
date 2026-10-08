@@ -1,0 +1,7 @@
+[Unit]
+Description=HatchMap state-change push to ntfy (server-side)
+After=hatch-topology-gen.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/sbin/hatch-notify.py

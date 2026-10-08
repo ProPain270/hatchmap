@@ -1,0 +1,10 @@
+[Unit]
+Description=hatch-notify fallback (catches a stalled generator)
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=5min
+Unit=hatch-notify.service
+
+[Install]
+WantedBy=timers.target

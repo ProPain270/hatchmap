@@ -1,0 +1,50 @@
+{
+  "bind": "127.0.0.1",
+  "port": 8771,
+  "protected_containers": [
+    "docker-socket-proxy"
+  ],
+  "notify": {
+    "ntfy": "http://127.0.0.1:5000",
+    "topic": "hatchmap-alerts",
+    "click": "https://your-node.your-tailnet.example:8443/topology.json",
+    "enabled": true,
+    "events": {
+      "node_down": true,
+      "node_up": true,
+      "node_warn": true,
+      "disk_warn": true,
+      "disk_crit": true,
+      "disk_ok": true,
+      "sitrep": true,
+      "stale": true
+    }
+  },
+  "scripts": [
+    {
+      "id": "backup",
+      "title": "Config backup",
+      "unit": "appdata-backup.service",
+      "match": [
+        "backup"
+      ],
+      "description": "Snapshots the application data directory to the backup repository now."
+    },
+    {
+      "id": "disk-guard",
+      "title": "Disk space guard",
+      "unit": "disk-space-guard.service",
+      "match": [
+        "disk-guard"
+      ],
+      "description": "Re-checks free space on every volume and applies the guard thresholds."
+    },
+    {
+      "id": "image-prune",
+      "title": "Docker image prune",
+      "unit": "docker-image-prune.service",
+      "match": [],
+      "description": "Frees disk by pruning unused Docker images."
+    }
+  ]
+}

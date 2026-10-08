@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Swift / macOS build output
+.build/
+DerivedData/
+build/
+*.app
+
+# Flutter / Dart / Android
+**/build/
+.dart_tool/
+.idea/
+*.iml
+.flutter-plugins-dependencies
+**/android/local.properties
+**/android/key.properties
+*.keystore
+*.jks
+*.apk
+
+# Python
+__pycache__/
+*.pyc
+
+# Exports, logs, secrets
+*.pdf
+*.log
+.env
+.env.*

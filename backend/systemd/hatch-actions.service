@@ -1,0 +1,13 @@
+[Unit]
+Description=HatchMap action service (tailnet-only, token-gated remote control)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/sbin/hatch-actions.py
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
